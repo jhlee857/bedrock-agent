@@ -63,6 +63,52 @@
                     }
                 }
             }
+        },
+        "/{startDate}/{endDate}/get-total-cost": {
+            "get": {
+                "summary": "Get total cost information from AWS.",
+                "description": "Get cost information from AWS (get total billing amount, not per service unit).",
+                "operationId": "getTotalCost",
+                "parameters": [{
+                    "name": "startDate",
+                    "in": "path",
+                    "description": "Query start date in YYYY-MM-DD format",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "name": "endDate",
+                    "in": "path",
+                    "description": "Query start date in YYYY-MM-DD format",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                }],
+                "responses": {
+                    "200": {
+                        "description": "Get costs by AWS service",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "totalCost": {
+                                                "type": "string",
+                                                "description": "Get total cost information from AWS."
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 }
