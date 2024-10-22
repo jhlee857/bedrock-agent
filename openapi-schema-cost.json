@@ -27,6 +27,12 @@
                     "name": "serviceName",
                     "in": "path",
                     "description": "Service name of the region",
+                    "enum": [
+                        "Amazon Elastic Kubernetes Service",
+                        "AWS Bedrock",
+                        "Amazon EC2",
+                        "Amazon S3"
+                    ],
                     "required": true,
                     "schema": {
                         "type": "string"
