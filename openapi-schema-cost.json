@@ -14,6 +14,42 @@
                 "summary": "Get costs by AWS service.",
                 "description": "Get costs for each AWS service through the cost explorer API.",
                 "operationId": "getServiceCost",
+                "parameters": [{
+                    "name": "regionIds",
+                    "in": "path",
+                    "description": "Unique name of the region",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "name": "serviceName",
+                    "in": "path",
+                    "description": "Service name of the region",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "name": "startDate",
+                    "in": "path",
+                    "description": "Query start date in YYYY-MM-DD format",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                },
+                {
+                    "name": "endDate",
+                    "in": "path",
+                    "description": "Query start date in YYYY-MM-DD format",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                }],
                 "responses": {
                     "200": {
                         "description": "Get costs by AWS service",
