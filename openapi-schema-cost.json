@@ -9,7 +9,7 @@
         }
     },
     "paths": {
-        "/service/{serviceName}/{startDate}/{endDate}/get-cost": {
+        "/service/{regionIds}/{serviceName}/{startDate}/{endDate}/get-cost": {
             "get": {
                 "summary": "Get costs by AWS service.",
                 "description": "Get costs for each AWS service through the cost explorer API.",
