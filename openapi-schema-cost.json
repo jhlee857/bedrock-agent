@@ -17,7 +17,7 @@
                 "parameters": [{
                     "name": "serviceName",
                     "in": "path",
-                    "description": "Service name of the region",
+                    "description": "AWS Service name",
                     "enum": [
                         "Amazon Elastic Kubernetes Service",
                         "AWS Bedrock",
