@@ -1,0 +1,41 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "AWS Cost Information API",
+        "version": "1.0.0",
+        "description": "List of APIs that retrieve cost information through AWS CostExplorer.",
+        "license": {
+          "name": "WnGenAI"
+        }
+    },
+    "paths": {
+        "/service/{serviceName}/{startDate}/{endDate}/get-cost": {
+            "get": {
+                "summary": "Get costs by AWS service.",
+                "description": "Get costs for each AWS service through the cost explorer API.",
+                "operationId": "getServiceCost",
+                "responses": {
+                    "200": {
+                        "description": "Get costs by AWS service",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "svcCost": {
+                                                "type": "string",
+                                                "description": "Cost of service."
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
