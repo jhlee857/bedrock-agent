@@ -9,21 +9,12 @@
         }
     },
     "paths": {
-        "/service/{serviceName}/{startDate}/{endDate}/get-cost": {
+        "{startDate}/{endDate}/get-service-cost": {
             "get": {
                 "summary": "Get costs by AWS service.",
                 "description": "Get costs for each AWS service through the cost explorer API.",
                 "operationId": "getServiceCost",
                 "parameters": [{
-                    "name": "serviceName",
-                    "in": "path",
-                    "description": "AWS Service name",
-                    "required": true,
-                    "schema": {
-                        "type": "string"
-                    }
-                },
-                {
                     "name": "startDate",
                     "in": "path",
                     "description": "Query start date in YYYY-MM-DD format",
