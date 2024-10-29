@@ -1,19 +1,19 @@
 {
     "openapi": "3.0.0",
     "info": {
-        "title": "AWS Cost Information API",
+        "title": "AWS Metrics Information API",
         "version": "1.0.0",
-        "description": "List of APIs that retrieve cost information through AWS CostExplorer.",
+        "description": "List of APIs that retrieve service metrics information through Cloudwatch",
         "license": {
           "name": "WnGenAI"
         }
     },
     "paths": {
-        "/service/{regionIds}/{serviceName}/{startDate}/{endDate}/get-cost": {
+        "/{regionIds}/{cpuThreshold}/{startTime}/{endTime}/get-ec2-cpu": {
             "get": {
-                "summary": "Get costs by AWS service.",
-                "description": "Get costs for each AWS service through the cost explorer API.",
-                "operationId": "getServiceCost",
+                "summary": "Get CPU information for EC2.",
+                "description": "Get EC2 CPU information via Cloudwatch API.",
+                "operationId": "getEc2CpuUsage",
                 "parameters": [{
                     "name": "regionIds",
                     "in": "path",
@@ -24,22 +24,16 @@
                     }
                 },
                 {
-                    "name": "serviceName",
+                    "name": "cpuThreshold",
                     "in": "path",
-                    "description": "Service name of the region",
-                    "enum": [
-                        "Amazon Elastic Kubernetes Service",
-                        "AWS Bedrock",
-                        "Amazon EC2",
-                        "Amazon S3"
-                    ],
+                    "description": "CPU usage upper limit as a basis for analysis",
                     "required": true,
                     "schema": {
-                        "type": "string"
+                        "type": "number"
                     }
                 },
                 {
-                    "name": "startDate",
+                    "name": "startTime",
                     "in": "path",
                     "description": "Query start date in YYYY-MM-DD format",
                     "required": true,
@@ -48,9 +42,9 @@
                     }
                 },
                 {
-                    "name": "endDate",
+                    "name": "endTime",
                     "in": "path",
-                    "description": "Query start date in YYYY-MM-DD format",
+                    "description": "Query end date in YYYY-MM-DD format",
                     "required": true,
                     "schema": {
                         "type": "string"
@@ -58,7 +52,7 @@
                 }],
                 "responses": {
                     "200": {
-                        "description": "Get costs by AWS service",
+                        "description": "Get CPU information for EC2",
                         "content": {
                             "application/json": {
                                 "schema": {
@@ -68,7 +62,7 @@
                                         "properties": {
                                             "svcCost": {
                                                 "type": "string",
-                                                "description": "Cost of service."
+                                                "description": "CPU information"
                                             }
                                         }
                                     }

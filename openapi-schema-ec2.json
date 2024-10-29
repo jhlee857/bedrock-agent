@@ -9,34 +9,6 @@
         }
     },
     "paths": {
-        "/region-list": {
-            "get": {
-                "summary": "Get a list of AWS region.",
-                "description": "Get the list of region.",
-                "operationId": "getRegionList",
-                "responses": {
-                    "200": {
-                        "description": "Gets the list of region",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "type": "array",
-                                    "items": {
-                                        "type": "object",
-                                        "properties": {
-                                            "regionIds": {
-                                                "type": "string",
-                                                "description": "Unique ID of the region."
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        },
         "/region/{regionIds}/ec2-list": {
             "get": {
                 "summary": "Get a list of EC2s.",
