@@ -1,0 +1,41 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Kubernetes Information API",
+        "version": "1.0.0",
+        "description": "A list of APIs that describe the list and status of kubernetes.",
+        "license": {
+          "name": "WnGenAI"
+        }
+    },
+    "paths": {
+        "/namespaces": {
+            "get": {
+                "summary": "Get a list of all namespaces in a Kubernetes cluster.",
+                "description": "Get a list of all namespaces in a Kubernetes cluster.",
+                "operationId": "getK8sNamespaces",
+                "responses": {
+                    "200": {
+                        "description": "Gets the list of namespaces",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "namespace_name": {
+                                                "type": "string",
+                                                "description": "name of the namespace."
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
