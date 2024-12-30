@@ -9,11 +9,65 @@
         }
     },
     "paths": {
-        "/namespaces": {
+        "/region/{regionIds}/cluster-list": {
+            "get": {
+                "summary": "Get a list of eks clusters.",
+                "description": "Get a list of cluster in a specified region.",
+                "operationId": "getEksClusterList",
+                "parameters": [{
+                    "name": "regionIds",
+                    "in": "path",
+                    "description": "Unique name of the region",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                }],
+                "responses": {
+                    "200": {
+                        "description": "Get a list of eks clusters",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "clusterName": {
+                                                "type": "string",
+                                                "description": "Unique Name of the eks cluster."
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/region/{regionIds}/cluster/{clusterName}/namespaces": {
             "get": {
                 "summary": "Get a list of all namespaces in a Kubernetes cluster.",
                 "description": "Get a list of all namespaces in a Kubernetes cluster.",
                 "operationId": "getK8sNamespaces",
+                "parameters": [{
+                    "name": "regionIds",
+                    "in": "path",
+                    "description": "Unique name of the region",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                },{
+                    "name": "clusterName",
+                    "in": "path",
+                    "description": "Unique name of eks cluster",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                }],
                 "responses": {
                     "200": {
                         "description": "Gets the list of namespaces",
@@ -24,9 +78,66 @@
                                     "items": {
                                         "type": "object",
                                         "properties": {
-                                            "namespace_name": {
+                                            "namespaceName": {
                                                 "type": "string",
                                                 "description": "name of the namespace."
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/region/{regionIds}/cluster/{clusterName}/namespaces/{namespaceName}/namespace-quota": {
+            "get": {
+                "summary": "Retrieves information about resources allocated to a namespace.",
+                "description": "Retrieves information about resources allocated to a namespace.",
+                "operationId": "getK8sNamespaceQuota",
+                "parameters": [
+                    {
+                        "name": "regionIds",
+                        "in": "path",
+                        "description": "Unique name of the region",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "clusterName",
+                        "in": "path",
+                        "description": "Unique name of eks cluster",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "namespaceName",
+                        "in": "path",
+                        "description": "Unique name of namespace",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Get resource information for a namespace",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "namespace_quota": {
+                                                "type": "string",
+                                                "description": "resource quota of namespace"
                                             }
                                         }
                                     }
